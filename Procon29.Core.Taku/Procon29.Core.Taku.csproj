@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks></TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">net471</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">net471</TargetFrameworks>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+
+
+  <ItemGroup>
+    <Compile Remove="AgentHandlers\**" />
+    <EmbeddedResource Remove="AgentHandlers\**" />
+    <None Remove="AgentHandlers\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Remove="Algorithms\BruteForceSearchAlgorithm_backup.cs" />
+    <Compile Remove="Genetic\GATeamHandler.cs" />
+    <Compile Remove="Genetic\IGAChromosome.cs" />
+    <Compile Remove="Genetic\NextIntentPresenterBase.cs" />
+    <Compile Remove="Genetic\WeightBiasChromosome.cs" />
+    <Compile Remove="Genetic\WeightBiasFitness.cs" />
+    <Compile Remove="Genetic\WeightBiasGATeamHandler.cs" />
+    <Compile Remove="Genetic\WeightBiasNextIntentPresenter.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="GeneticSharp" Version="2.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Procon29.Core\Procon29.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Genetic\" />
+  </ItemGroup>
+
+</Project>

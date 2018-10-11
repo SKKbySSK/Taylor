@@ -1,0 +1,41 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Procon29"
+        xmlns:core="clr-namespace:Procon29.Core;assembly=Procon29.Core"
+        xmlns:Views="clr-namespace:Procon29.Views" x:Class="Procon29.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="171*"/>
+            <ColumnDefinition Width="47*"/>
+        </Grid.ColumnDefinitions>
+
+        <Views:GameView x:Name="mainField" Margin="0,23,0,10" Grid.Column="1" Background="#FFE4E4E4" XAxisBrush="#2200FF00" YAxisBrush="#2200FF00" Clicked="mainField_Clicked"/>
+        <Menu HorizontalAlignment="Left" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3">
+            <MenuItem x:Name="abortGameItem" Header="ゲームを中止" Visibility="Collapsed" Click="abortGameItem_Click"/>
+            <MenuItem x:Name="newGameItem" Header="新規ゲーム">
+                <Label Content="{Binding ElementName=widthS, Path=Value}" ContentStringFormat="横幅:{0}"/>
+                <Slider x:Name="widthS" HorizontalAlignment="Stretch" Width="100" Minimum="2" Maximum="12" Value="12" IsSnapToTickEnabled="True" TickFrequency="1"/>
+                <Label Content="{Binding ElementName=heightS, Path=Value}" ContentStringFormat="縦幅:{0}"/>
+                <Slider x:Name="heightS" HorizontalAlignment="Stretch" Width="100" Minimum="2" Maximum="12" Value="12" IsSnapToTickEnabled="True" TickFrequency="1"/>
+                <Separator/>
+                <Label Content="正規分布"/>
+                <Label Content="μ(平均)"/>
+                <TextBox x:Name="muT" Text="1" Width="100"/>
+                <Label Content="σ(標準偏差)"/>
+                <TextBox x:Name="sigmaT" Text="3" Width="100"/>
+                <CheckBox x:Name="cosC" Content="計算にCosを使用する" IsChecked="True"/>
+                <MenuItem x:Name="newField" Header="作成" Click="newField_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="qrItem" Header="QR" Click="qrItem_Click"/>
+            <MenuItem x:Name="loadItem" Header="読み込み" Click="loadItem_Click"/>
+        </Menu>
+
+        <Views:TeamHandlerView x:Name="handlerView" Margin="0,18,0,0"/>
+    </Grid>
+</Window>

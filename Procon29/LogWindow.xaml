@@ -1,0 +1,23 @@
+﻿<Window x:Class="Procon29.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Procon29"
+        mc:Ignorable="d"
+        Title="LogWindow" Height="450" Width="800" Topmost="False" x:Name="window">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="最前面に表示" IsChecked="{Binding ElementName=window, Path=Topmost}" IsCheckable="True"/>
+            </Menu>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" x:Name="scroll" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+            <TextBox x:Name="text" IsReadOnly="True" BorderThickness="0" TextWrapping="Wrap" Background="Black" Foreground="AliceBlue" Text="Procon29 Log Window" FontSize="13"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
